@@ -173,7 +173,7 @@ if (booleanFromEnv('CONTINUOUS_INTEGRATION', false)) {
   ], {
     'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
     'idle-timeout': 900,
-    name: 'lucibus/caido',
+    name: 'lucibus/caido:integration',
     build: process.env.TRAVIS_BUILD_NUMBER
   })
 }

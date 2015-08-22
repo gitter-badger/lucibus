@@ -33,7 +33,6 @@ module.exports = function (config) {
     preprocessors: {
       'test/unit/**/*.js': ['webpack']
     },
-    startConnect: false,
     reporters: [
       'mocha',
       'coverage'
@@ -46,6 +45,18 @@ module.exports = function (config) {
       type: 'text',
       dir: 'coverage/'
     },
+    sauceLabs: {
+      testName: 'lucibus/caido:unit',
+      tunnelIdentifier: process.env.TRAVIS_JOB_NUMBER,
+      username: process.env.SAUCE_USERNAME,
+      accessKey: process.env.SAUCE_ACCESS_KEY,
+      startConnect: false,
+      connectOptions: {
+        port: 5757,
+        logfile: 'sauce_connect.log'
+      }
+    },
+
     client: {
       mocha: {
         reporter: 'html', // change Karma's debug.html to the mocha web reporter
