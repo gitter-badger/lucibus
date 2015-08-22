@@ -1,4 +1,4 @@
-default: lucibus
+default: travis
 
 caido/dist/index.html: $(wildcard caido/app/*)
 	cd caido; npm run build
@@ -28,5 +28,6 @@ travis_script:
 
 travis_after_success:
 
+travis: travis_install travis_script
 
-.PHONY: travis_install travis_script travis_after_success
+.PHONY: travis_install travis_script travis_after_success travis
