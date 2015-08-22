@@ -7,15 +7,29 @@ const DELETE = '\uE003'
 // const DOWN_ARROW = '\uE015'
 
 var browsers = webdriverio.multiremote({
-  first: {}
+  first: {
+      desiredCapabilities: {
+        browserName: 'chrome'
+      }
+    },
+  second: {
+      desiredCapabilities: {
+        browserName: 'chrome'
+      }
+    }
 })
 var firstBrowser = browsers.select('first')
-var secondBrowser = firstBrowser
+var secondBrowser = browsers.select('second')
 
 describe('App', function () {
-
+  before(function *() {
+    yield browsers.init()
+  })
+  after(function *() {
+    yield browsers.end()
+  })
   beforeEach('go to URL', function *() {
-    yield firstBrowser.url('google.com')
+    yield browsers.url('http://localhost/')
   })
 
 

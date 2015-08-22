@@ -10,3 +10,4 @@ subicul/vendor
 vendor
 bindata.go
 node_modules
+npm-debug.log.*

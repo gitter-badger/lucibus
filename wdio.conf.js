@@ -134,11 +134,7 @@ var config = {
     ui: 'bdd'
     // 'check-leaks': true,
     // bail: true
-  },
-
-  // Shorten url command calls by setting a base url. If your url parameter starts with '/'
-  // the base url gets prepended.
-  baseUrl: 'http://localhost'
+  }
 }
 
 if (booleanFromEnv('WDIO_SAUCELABS', false)) {
