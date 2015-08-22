@@ -1,4 +1,4 @@
-var booleanFromEnv = require('./config/booleanFromEnv')
+var booleanFromEnv = require('./caido/config/booleanFromEnv')
 var flattenBrowser = require('zuul/lib/flatten_browser')
 var request = require('sync-request')
 var assign = require('lodash').assign
@@ -48,7 +48,7 @@ var config = {
   // file.
   //
   specs: [
-    './test/integration/**/*.js'
+    './test/**/*.js'
   ],
   // Patterns to exclude.
   exclude: [
@@ -69,10 +69,6 @@ var config = {
   //
   capabilities: [{
     browserName: 'chrome'
-    // platform: 'MAC',
-    // chromeOptions: {
-      // binary: require('expand-home-dir')('~') + '/Applications/Google\ Chrome\ Canary.app/Contents/MacOS/Google\ Chrome\ Canary'
-    // }
   }
   // {
   //   browserName: 'phantomjs'
@@ -142,10 +138,10 @@ var config = {
 
   // Shorten url command calls by setting a base url. If your url parameter starts with '/'
   // the base url gets prepended.
-  baseUrl: 'http://localhost:5050'
+  baseUrl: 'http://localhost'
 }
 
-if (booleanFromEnv('CONTINUOUS_INTEGRATION', false)) {
+if (booleanFromEnv('WDIO_SAUCELABS', false)) {
   //
   // =================
   // Service Providers
@@ -173,7 +169,7 @@ if (booleanFromEnv('CONTINUOUS_INTEGRATION', false)) {
   ], {
     'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
     'idle-timeout': 900,
-    name: 'lucibus/caido',
+    name: 'lucibus',
     build: process.env.TRAVIS_BUILD_NUMBER
   })
 }

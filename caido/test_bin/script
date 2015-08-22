@@ -6,4 +6,4 @@ npm run build
 http-server dist -p 5050 > /dev/null &
 sleep 1
 
-env WDIO_SAUCELABS=true npm test
+npm test

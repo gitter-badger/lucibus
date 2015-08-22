@@ -1,4 +1,7 @@
 #!/bin/bash
 set -euox pipefail
 
-make
+sudo npm run test:start-server > /dev/null &
+sleep 1
+
+env WDIO_SAUCELABS=true npm test

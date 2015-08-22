@@ -1,0 +1,48 @@
+{
+  "name": "lucibus",
+  "version": "0.1.0",
+  "scripts": {
+    "lint": "standard",
+    "test": "wdio wdio.conf.js",
+    "test:watch": "watch 'npm run test' test/ app/",
+    "pretest:start-selenium": "selenium-standalone install",
+    "test:start-selenium": "selenium-standalone start",
+    "test:start-server": "./lucibus",
+    "test:dev": "parallelshell 'npm run test:start-selenium' 'npm run test:start-server' 'npm run test:watch'",
+    "deps:updates": "npm-check-updates"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "babel": "^5.8.21",
+    "babel-core": "^5.8.22",
+    "babel-eslint": "^4.0.5",
+    "mocha": "^2.2.5",
+    "must": "^0.13.0-beta2",
+    "parallelshell": "^2.0.0",
+    "standard": "^5.1.0",
+    "watch": "^0.16.0",
+    "webdriverio": "^3.1.0",
+    "lodash": "^3.10.1",
+    "sync-request": "^2.0.1",
+    "zuul": "^3.2.0"
+  },
+  "standard": {
+    "parser": "babel-eslint",
+    "globals": [
+      "WebSocket",
+      "location",
+      "browser",
+      "describe",
+      "context",
+      "it",
+      "before",
+      "after",
+      "beforeEach",
+      "afterEach"
+    ]
+  },
+  "devDependencies": {
+    "dependency-check": "^2.5.0",
+    "selenium-standalone": "^4.5.3"
+  }
+}
