@@ -37,6 +37,11 @@
       "after",
       "beforeEach",
       "afterEach"
+    ],
+    "ignore": [
+      "/subicul/",
+      "/caido/",
+      "/api/"
     ]
   },
   "devDependencies": {

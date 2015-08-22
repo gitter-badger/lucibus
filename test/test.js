@@ -8,15 +8,15 @@ const DELETE = '\uE003'
 
 var browsers = webdriverio.multiremote({
   first: {
-      desiredCapabilities: {
-        browserName: 'chrome'
-      }
-    },
-  second: {
-      desiredCapabilities: {
-        browserName: 'chrome'
-      }
+    desiredCapabilities: {
+      browserName: 'chrome'
     }
+  },
+  second: {
+    desiredCapabilities: {
+      browserName: 'chrome'
+    }
+  }
 })
 var firstBrowser = browsers.select('first')
 var secondBrowser = browsers.select('second')
@@ -29,9 +29,8 @@ describe('App', function () {
     yield browsers.end()
   })
   beforeEach('go to URL', function *() {
-    yield browsers.url('http://localhost/')
+    yield browsers.url('http://localhost:8081/')
   })
-
 
   describe('Live', function () {
     describe('Grandmaster', function () {
