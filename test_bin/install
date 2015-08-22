@@ -1,7 +1,0 @@
-#!/bin/bash
-set -euox pipefail
-
-go get github.com/Masterminds/glide
-glide up
-make
-npm install
