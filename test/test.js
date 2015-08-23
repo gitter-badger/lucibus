@@ -68,9 +68,12 @@ describe('App', function () {
     it('changing on one should change both', function *() {
       yield* clickAndType(firstBrowser, 10)
       yield* mustEqual(firstBrowser, 10)
+      yield secondBrowser.pause(500)
       yield* mustEqual(secondBrowser, 10)
+
       yield* clickAndType(secondBrowser, 20)
       yield* mustEqual(secondBrowser, 20)
+      yield firstBrowser.pause(500)
       yield* mustEqual(firstBrowser, 20)
     })
   })
