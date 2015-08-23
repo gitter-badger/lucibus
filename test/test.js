@@ -4,13 +4,14 @@ import booleanFromEnv from '../caido/config/booleanFromEnv'
 
 const DELETE = '\uE003'
 
-var browserConfig
+var config
 
 if (booleanFromEnv('CI', false)) {
-  console.log('Using CI')
-  browserConfig = {
+  config = {
     user: process.env.SAUCE_USERNAME,
     key: process.env.SAUCE_ACCESS_KEY,
+    host: 'ondemand.saucelabs.com',
+    port: 80,
     desiredCapabilities: {
       browserName: 'chrome',
       'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
@@ -20,16 +21,18 @@ if (booleanFromEnv('CI', false)) {
     }
   }
 } else {
-  browserConfig = {
+  config = {
     desiredCapabilities: {
       browserName: 'chrome'
     }
   }
 }
 
+console.log('Using config:', config)
+
 var browsers = webdriverio.multiremote({
-  first: browserConfig,
-  second: browserConfig
+  first: config,
+  second: config
 })
 
 var firstBrowser = browsers.select('first')

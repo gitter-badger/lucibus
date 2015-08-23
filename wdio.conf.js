@@ -1,5 +1,3 @@
-var booleanFromEnv = require('./caido/config/booleanFromEnv')
-
 require('babel/register')({
   experimental: true,
   blacklist: [
@@ -105,15 +103,16 @@ var config = {
   }
 }
 
-if (booleanFromEnv('CI', false)) {
-  config.updateJob = true
-  config.capabilities = [{
-    browserName: 'chrome',
-    'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
-    'idle-timeout': 900,
-    name: 'lucibus',
-    build: process.env.TRAVIS_BUILD_NUMBER
-  }]
-}
+// if (booleanFromEnv('CI', false)) {
+//   console.log('Using CI in config')
+//   config.updateJob = true
+//   config.capabilities = [{
+//     browserName: 'chrome',
+//     'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
+//     'idle-timeout': 900,
+//     name: 'lucibus',
+//     build: process.env.TRAVIS_BUILD_NUMBER
+//   }]
+// }
 
 exports.config = config
