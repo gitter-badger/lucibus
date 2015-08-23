@@ -106,7 +106,8 @@ var config = {
 }
 
 if (booleanFromEnv('CI', false)) {
-  config.updateJob = true
+  config.updateJob = true,
+  config.capabilities = []
 }
 
 exports.config = config
