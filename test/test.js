@@ -30,8 +30,6 @@ if (booleanFromEnv('CI', false)) {
   }
 }
 
-console.log('Using config:', config)
-
 var browsers = webdriverio.multiremote({
   first: config,
   second: config

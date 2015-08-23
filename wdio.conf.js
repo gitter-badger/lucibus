@@ -123,6 +123,4 @@ if (booleanFromEnv('CI', false)) {
   })
 }
 
-console.log('config from file: ', config)
-
 exports.config = config
