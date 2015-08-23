@@ -115,6 +115,8 @@ if (booleanFromEnv('CI', false)) {
       browserName: 'chrome',
       'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
       'idle-timeout': 30000,
+      version: 'dev',
+      platform: 'Mac 10.10',
       name: 'lucibus',
       build: process.env.TRAVIS_BUILD_NUMBER
     }

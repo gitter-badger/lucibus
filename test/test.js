@@ -17,6 +17,8 @@ if (booleanFromEnv('CI', false)) {
       'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
       'idle-timeout': 30000,
       name: 'lucibus',
+      version: 'dev',
+      platform: 'Mac 10.10',
       build: process.env.TRAVIS_BUILD_NUMBER
     }
   }
