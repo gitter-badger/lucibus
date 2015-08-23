@@ -1,36 +1,4 @@
 var booleanFromEnv = require('./caido/config/booleanFromEnv')
-var flattenBrowser = require('zuul/lib/flatten_browser')
-var request = require('sync-request')
-var assign = require('lodash').assign
-
-// copied from https://github.com/defunctzombie/zuul/blob/18e1a674f54b7d131b5e5ff82b2a6a75a49ec0c4/lib/scout_browser.js#L42-L56
-function format (obj) {
-  var browsers = {}
-  obj.forEach(function (info) {
-    var name = info.api_name
-
-    var browser = browsers[name] = browsers[name] || []
-    browser.push({
-      name: name,
-      version: info.short_version,
-      platform: info.os
-    })
-  })
-
-  return browsers
-}
-
-function queryBrowsers (query, optionalKeys) {
-  var res = request('GET', 'https://saucelabs.com/rest/v1/info/browsers/webdriver')
-  var allBrowsers = JSON.parse(res.getBody('utf8'))
-  var chosenBrowsers = flattenBrowser(query, format(allBrowsers))
-  chosenBrowsers.map(function (browser) {
-    browser.browserName = browser.name
-    delete browser.name
-    assign(browser, optionalKeys)
-  })
-  return chosenBrowsers
-}
 
 require('babel/register')({
   experimental: true,
@@ -138,36 +106,7 @@ var config = {
 }
 
 if (booleanFromEnv('CI', false)) {
-  //
-  // =================
-  // Service Providers
-  // =================
-  // WebdriverIO supports Sauce Labs, Browserstack and Testing Bot (other cloud providers
-  // should work too though). These services define specific user and key (or access key)
-  // values you need to put in here in order to connect to these services.
-  //
-  config.user = process.env.SAUCE_USERNAME
-  config.key = process.env.SAUCE_ACCESS_KEY
-
-  //
-  // If you are using Sauce Labs WebdriverIO takes care about updating the job information
-  // once the test is done. This option is set to `true` per default.
-  //
   config.updateJob = true
-  // delete config.reporter
-
-  config.capabilities = queryBrowsers([
-    // {name: 'internet explorer', version: '10..latest'},
-    // {name: 'firefox', version: '38..latest'},
-    {name: 'chrome', version: 'latest'}
-    // {name: 'safari', version: '8..latest'},
-    // {name: 'iphone', version: '8.4..latest'}
-  ], {
-    'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
-    'idle-timeout': 900,
-    name: 'lucibus',
-    build: process.env.TRAVIS_BUILD_NUMBER
-  })
 }
 
 exports.config = config
