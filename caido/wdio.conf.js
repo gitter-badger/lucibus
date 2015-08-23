@@ -167,7 +167,7 @@ if (booleanFromEnv('CI', false)) {
   config.capabilities = queryBrowsers([
     // {name: 'internet explorer', version: '10..latest'},
     // {name: 'firefox', version: '38..latest'},
-    {name: 'chrome', version: 'latest'}
+    {name: 'chrome', version: 'dev'}
     // {name: 'safari', version: '8..latest'},
     // {name: 'iphone', version: '8.4..latest'}
   ], {
