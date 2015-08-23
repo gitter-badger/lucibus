@@ -1,6 +1,6 @@
 var booleanFromEnv = require('./config/booleanFromEnv')
 
-const SAUCELABS = booleanFromEnv('CONTINUOUS_INTEGRATION', false)
+const SAUCELABS = booleanFromEnv('CI', false)
 
 process.env.WEBPACK_MINIMIZE = 'false'
 process.env.WEBPACK_DEVTOOL = 'inline-source-map'
@@ -45,6 +45,7 @@ module.exports = function (config) {
       type: 'text',
       dir: 'coverage/'
     },
+    logLevel: config.LOG_DEBUG,
     sauceLabs: {
       testName: 'lucibus/caido:unit',
       tunnelIdentifier: process.env.TRAVIS_JOB_NUMBER,
