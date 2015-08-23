@@ -7,6 +7,7 @@ const DELETE = '\uE003'
 var browserConfig
 
 if (booleanFromEnv('CI', false)) {
+  console.log('Using CI')
   browserConfig = {
     user: process.env.SAUCE_USERNAME,
     key: process.env.SAUCE_ACCESS_KEY,
