@@ -107,7 +107,13 @@ var config = {
 
 if (booleanFromEnv('CI', false)) {
   config.updateJob = true
-  config.capabilities = []
+  config.capabilities = [{
+    browserName: 'chrome',
+    'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
+    'idle-timeout': 900,
+    name: 'lucibus',
+    build: process.env.TRAVIS_BUILD_NUMBER
+  }]
 }
 
 exports.config = config
