@@ -4,7 +4,7 @@
   "main": "app/main.jsx",
   "scripts": {
     "lint": "standard",
-    "test": "npm run test:unit; npm run test:integration",
+    "test": "npm run test:unit && npm run test:integration",
     "test:unit": "karma start karma.conf.js --single-run",
     "test:unit:watch": "karma start karma.conf.js --no-single-run",
     "test:integration": "wdio wdio.conf.js",
