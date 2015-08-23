@@ -56,6 +56,7 @@ describe('App', function () {
     it('must start at 100', function *() {
       yield* mustEqual(firstBrowser, 100)
       yield* mustEqual(secondBrowser, 100)
+      yield browsers.sync()
     })
     function * click (b) {
       yield b.waitForVisible('#grandmaster .level input')
@@ -68,12 +69,14 @@ describe('App', function () {
     it('changing on one should change both', function *() {
       yield* clickAndType(firstBrowser, 10)
       yield* mustEqual(firstBrowser, 10)
-      yield secondBrowser.pause(500)
+      yield browsers.pause(1000)
       yield* mustEqual(secondBrowser, 10)
+
+      yield browsers.sync()
 
       yield* clickAndType(secondBrowser, 20)
       yield* mustEqual(secondBrowser, 20)
-      yield firstBrowser.pause(500)
+      yield browsers.pause(1000)
       yield* mustEqual(firstBrowser, 20)
     })
   })
