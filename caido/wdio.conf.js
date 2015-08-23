@@ -145,7 +145,7 @@ var config = {
   baseUrl: 'http://localhost:5050'
 }
 
-if (booleanFromEnv('CONTINUOUS_INTEGRATION', false)) {
+if (booleanFromEnv('CI', false)) {
   //
   // =================
   // Service Providers

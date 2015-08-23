@@ -137,7 +137,7 @@ var config = {
   }
 }
 
-if (booleanFromEnv('WDIO_SAUCELABS', false)) {
+if (booleanFromEnv('CI', false)) {
   //
   // =================
   // Service Providers
