@@ -59,7 +59,7 @@ var config = {
 
   //
   // Default timeout for all waitForXXX commands.
-  waitforTimeout: 1000,
+  waitforTimeout: 2000,
   //
   // Initialise the browser instance with a WebdriverIO plugin. The object should have the
   // plugin name as key and the desired plugin options as property. Make sure you have
