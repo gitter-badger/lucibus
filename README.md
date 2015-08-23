@@ -1,5 +1,7 @@
 # Lucibus
 
+[![Join the chat at https://gitter.im/lucibus/lucibus](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/lucibus/lucibus?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 *Modern stage lighting control system*
 
 [![Circle CI](https://circleci.com/gh/lucibus/lucibus.svg?style=svg)](https://circleci.com/gh/lucibus/lucibus)
