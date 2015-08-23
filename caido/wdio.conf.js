@@ -96,7 +96,7 @@ var config = {
   //
   // Default timeout for all waitForXXX commands.
   waitforTimeout: 1000,
-  //
+
   // Initialise the browser instance with a WebdriverIO plugin. The object should have the
   // plugin name as key and the desired plugin options as property. Make sure you have
   // the plugin installed before running any tests. The following plugins are currently
@@ -172,7 +172,7 @@ if (booleanFromEnv('CI', false)) {
     // {name: 'iphone', version: '8.4..latest'}
   ], {
     'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
-    'idle-timeout': 900,
+    'idle-timeout': 30000,
     name: 'lucibus/caido:integration',
     build: process.env.TRAVIS_BUILD_NUMBER
   })

@@ -114,7 +114,7 @@ if (booleanFromEnv('CI', false)) {
     desiredCapabilities: {
       browserName: 'chrome',
       'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
-      'idle-timeout': 900,
+      'idle-timeout': 30000,
       name: 'lucibus',
       build: process.env.TRAVIS_BUILD_NUMBER
     }

@@ -47,7 +47,7 @@ module.exports = function (config) {
       dir: 'coverage/'
     },
     logLevel: config.LOG_DEBUG,
-
+    browserNoActivityTimeout: 30000,
     sauceLabs: {
       testName: 'lucibus/caido:unit',
       tunnelIdentifier: process.env.TRAVIS_JOB_NUMBER,
