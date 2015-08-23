@@ -18,14 +18,32 @@ const customLaunchers = {
   sl_chrome: {
     base: 'SauceLabs',
     browserName: 'chrome',
-    version: 'latest'
+    platform: 'Windows 7',
+    version: '35'
+  },
+  sl_firefox: {
+    base: 'SauceLabs',
+    browserName: 'firefox',
+    version: '30'
+  },
+  sl_ios_safari: {
+    base: 'SauceLabs',
+    browserName: 'iphone',
+    platform: 'OS X 10.9',
+    version: '7.1'
+  },
+  sl_ie_11: {
+    base: 'SauceLabs',
+    browserName: 'internet explorer',
+    platform: 'Windows 8.1',
+    version: '11'
   }
 }
 
 module.exports = function (config) {
   config.set({
     browsers: SAUCELABS ? Object.keys(customLaunchers) : ['Chrome'],
-    frameworks: ['source-map-support', 'mocha'],
+    frameworks: ['mocha'],
     files: [
       'test/unit/**/*.js'
     ],
@@ -34,7 +52,7 @@ module.exports = function (config) {
       'test/unit/**/*.js': ['webpack']
     },
     reporters: [
-      'mocha',
+      'dots',
       'coverage'
     ].concat(SAUCELABS ? ['saucelabs'] : []),
     webpack: webpackConf,
@@ -45,21 +63,14 @@ module.exports = function (config) {
       type: 'text',
       dir: 'coverage/'
     },
-    logLevel: config.LOG_DEBUG,
-    sauceLabs: {
-      testName: 'lucibus/caido:unit',
-      tunnelIdentifier: process.env.TRAVIS_JOB_NUMBER,
-      username: process.env.SAUCE_USERNAME,
-      accessKey: process.env.SAUCE_ACCESS_KEY,
-      startConnect: false
-    },
-    captureTimeout: 0,
+    logLevel: config.LOG_DEBUG
 
-    client: {
-      mocha: {
-        reporter: 'html', // change Karma's debug.html to the mocha web reporter
-        ui: 'bdd'
-      }
-    }
+    // sauceLabs: {
+    //   testName: 'lucibus/caido:unit',
+    //   tunnelIdentifier: process.env.TRAVIS_JOB_NUMBER,
+    //   username: process.env.SAUCE_USERNAME,
+    //   accessKey: process.env.SAUCE_ACCESS_KEY,
+    //   startConnect: false
+    // }
   })
 }
