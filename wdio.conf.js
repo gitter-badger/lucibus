@@ -1,3 +1,5 @@
+var booleanFromEnv = require('./caido/config/booleanFromEnv')
+
 require('babel/register')({
   experimental: true,
   blacklist: [
@@ -103,16 +105,22 @@ var config = {
   }
 }
 
-// if (booleanFromEnv('CI', false)) {
-//   console.log('Using CI in config')
-//   config.updateJob = true
-//   config.capabilities = [{
-//     browserName: 'chrome',
-//     'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
-//     'idle-timeout': 900,
-//     name: 'lucibus',
-//     build: process.env.TRAVIS_BUILD_NUMBER
-//   }]
-// }
+if (booleanFromEnv('CI', false)) {
+  Object.assign(config, {
+    user: process.env.SAUCE_USERNAME,
+    key: process.env.SAUCE_ACCESS_KEY,
+    host: 'ondemand.saucelabs.com',
+    port: 80,
+    desiredCapabilities: {
+      browserName: 'chrome',
+      'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
+      'idle-timeout': 900,
+      name: 'lucibus',
+      build: process.env.TRAVIS_BUILD_NUMBER
+    }
+  })
+}
+
+console.log('config from file: ', config)
 
 exports.config = config
